@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="gallery">
+    {% for post in posts %}
+        <div class="gallery-item">
+            <a href="{{ url_for('view_image', post_id=post.id) }}">
+                <img src="{{ url_for('static', filename='uploads/' + post.filename) }}" alt="Gallery Image">
+            </a>
+        </div>
+    {% else %}
+        <p>No images uploaded yet.</p>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Upload Image{% endblock %}
+
+{% block content %}
+<div class="upload-container">
+    <form method="POST" action="{{ url_for('upload_image') }}" enctype="multipart/form-data">
+        <div class="upload-box">
+            <input type="file" name="file" id="file" accept=".jpg,.png,.gif" required>
+            <p>Drag and drop your image here</p>
+            <span>or</span>
+            <button type="button" onclick="document.getElementById('file').click()">Browse Files</button>
+        </div>
+        <button type="submit" class="upload-btn">Upload Image</button>
+    </form>
+</div>
+{% endblock %}

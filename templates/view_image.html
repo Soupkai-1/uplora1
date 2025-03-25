@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}View Image{% endblock %}
+
+{% block content %}
+<div class="image-view">
+    <img src="{{ url_for('static', filename='uploads/' + post.filename) }}" alt="Gallery Image">
+    
+    {% if current_user.is_authenticated %}
+    <div class="comment-section">
+        <form method="POST">
+            <textarea name="comment" placeholder="Share your thoughts..." required></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    {% endif %}
+
+    <div class="comments">
+        <h3>Comments</h3>
+        {% for comment in comments %}
+            <div class="comment">
+                <strong>{{ comment.author.username }}</strong>
+                <p>{{ comment.content }}</p>
+            </div>
+        {% else %}
+            <p>No comments yet.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
